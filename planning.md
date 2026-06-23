@@ -34,7 +34,7 @@ This community is a strong fit for a classification task because discussion qual
 
 ### 3. Reaction
 
-**Definition:** An immediate emotional response to a match, goal, transfer, referee decision, or breaking news event.
+**Definition:** An immediate emotional response to a match, goal, transfer, referee decision, or breaking news event. Match results, qualification announcements, transfer confirmations, injury news, and other event updates will generally be labeled reaction unless the post itself is primarily analyzing or predicting something.
 
 **Example Posts:**
 
