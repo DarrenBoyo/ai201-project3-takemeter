@@ -167,3 +167,49 @@ For this classifier to be genuinely useful, it should consistently separate evid
 * No individual class F1 below 0.75
 
 At deployment quality, moderators or community researchers could use the classifier to analyze discussion trends, filter content types, or study how discourse quality changes over time in r/soccer.
+
+## AI Tool Plan
+
+### Label Stress-Testing
+
+Before beginning annotation, I will use an AI assistant (ChatGPT) to stress-test my taxonomy. I will provide the model with my four label definitions (**Analysis, Hot Take, Reaction, and Speculation**) along with the edge-case decision rules.
+
+I will then ask the AI to generate 5–10 example r/soccer posts that intentionally sit at the boundary between two labels, such as:
+
+* Analysis vs. Hot Take
+* Analysis vs. Speculation
+* Reaction vs. Hot Take
+* Reaction vs. Speculation
+
+For each generated post, I will attempt to assign exactly one label. If I encounter examples that cannot be classified consistently using my current definitions, I will revise the definitions or decision rules before collecting the full dataset. This process will help identify ambiguous boundaries early and improve annotation consistency.
+
+### Annotation Assistance
+
+I plan to use ChatGPT as a pre-labeling assistant for part of the dataset. The workflow will be:
+
+1. Collect raw posts and comments from r/soccer.
+2. Ask the AI to assign one of the four labels to each example.
+3. Independently review every suggested label before adding it to the final dataset.
+4. Correct any labels that appear inconsistent with the taxonomy.
+
+The AI-generated labels will be treated as suggestions rather than ground truth. To maintain transparency, I will keep a separate column in my annotation spreadsheet called `ai_prelabel` that records the model's initial prediction. My final human-reviewed label will be stored in a separate `final_label` column. This will allow me to disclose which examples received AI assistance during annotation.
+
+### Failure Analysis
+
+After training and evaluating the classifier, I will use ChatGPT to help analyze misclassified examples.
+
+I will provide the model with:
+
+* The original post text
+* The true label
+* The predicted label
+
+I will ask the AI to identify recurring error patterns, such as:
+
+* Analysis posts being confused with Hot Takes
+* Speculation being mistaken for Analysis
+* Short analytical posts being classified as Reactions
+* Posts with mixed emotional and evidential content causing confusion
+
+The AI's observations will be treated as hypotheses rather than conclusions. To verify any suggested pattern, I will manually review the relevant examples and confirm whether the explanation is supported by the data. Only patterns that can be independently verified through inspection of the misclassified examples will be included in the final evaluation report.
+
